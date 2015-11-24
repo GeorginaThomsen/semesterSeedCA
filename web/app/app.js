@@ -6,6 +6,7 @@ angular.module('myApp', [
   'ngAnimate',
   'ui.bootstrap',
   'myApp.security',
+  'myApp.view0',
   'myApp.view1',
   'myApp.view2',
   'myApp.view3',
@@ -16,7 +17,7 @@ angular.module('myApp', [
   'myApp.services'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/view1'});
+  $routeProvider.otherwise({redirectTo: '/view0'});
 }]).
 config(function ($httpProvider) {
    $httpProvider.interceptors.push('authInterceptor');
