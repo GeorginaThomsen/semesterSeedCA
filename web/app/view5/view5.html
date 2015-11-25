@@ -1,0 +1,16 @@
+<div class="col-sm-3">
+    <div class="alert-danger" ng-show="isSignedUp">
+        <p>Congratulations {{ data.username }}! You are now registered! </p>
+    </div>
+    <form role="form">
+        <div class="form-group">
+            <label for="username">User name</label>
+            <input type="text" class="form-control" ng-model="newuser.username">
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" ng-model="newuser.password">
+        </div>
+        <button type="submit" class="btn btn-default" ng-click="signUp()">Submit</button>
+    </form>
+</div>

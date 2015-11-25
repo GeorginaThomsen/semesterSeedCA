@@ -57,6 +57,20 @@ public class BackendTest {
     }
 
     @Test
+    public void signUp(){
+        
+        given().
+                contentType("application/json").
+                body("{'username':'test1', 'password': 'test'}").
+                when().
+                post("/signUp").
+                then().
+                statusCode(200).
+                body("username", equalTo("test13"));
+                
+    }
+    
+    @Test
     public void LoginWrongUsername() {
         given().
                 contentType("application/json").
