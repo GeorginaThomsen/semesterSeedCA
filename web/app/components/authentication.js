@@ -35,6 +35,7 @@ angular.module('myApp.security', [])
             $scope.isUser = false;
             $scope.message = '';
             $scope.error = null;
+            $scope.showLoginForm = true;
 
             $scope.login = function () {
                 $http
@@ -55,7 +56,8 @@ angular.module('myApp.security', [])
                                 }
                             });
                             $scope.error = null;
-                            $location.path("#/view0")
+                            $location.path("#/view0");
+
 
                         })
                         .error(function (data, status, headers, config) {
@@ -93,14 +95,26 @@ angular.module('myApp.security', [])
             };
 // and fire it after definition
             init();
-        }).
+        })
+        //.factory('DisabledAuthInterceptor', function () {
+        //  return{
+        //    enabledLoader: true
+        // };
+        //})
+        .
         factory('authInterceptor', function ($rootScope, $q, $window) {
             return {
                 request: function (config) {
+                    // if (DisabledAuthInterceptor.enabledLoader) {
                     config.headers = config.headers || {};
-                    if ($window.sessionStorage.token) {
-                        config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
+                    var isCrossOrigin = config.url.toLowerCase().indexOf('http') === 0;
+                    if (!isCrossOrigin) {
+                        if ($window.sessionStorage.token) {
+                            config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
+                        }
+
                     }
+                    //}
                     $rootScope.error = "";
                     return config;
                 },

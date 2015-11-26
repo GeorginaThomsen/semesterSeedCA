@@ -1,2 +1,52 @@
-<p>Company info - view2 CA3</p>
 
+<div class="panel panel-default">
+    <div class="panel panel-heading">
+        <h3 class="panel-title"><strong>Find Company Information</strong></h3>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal">
+            <div class="form-horizontal">
+                <fieldset>
+                    <div class="form-group" id="searchGroup">
+                        <label class="col-sm-2 control-label" for="search">Search text</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="search" name="search" ng-model="InfoService.search" placeholder="Required">
+                        </div>
+                    </div>
+                    <div class="form-group" id="searchOption">
+                        <label class="col-sm-2 control-label" for="searchOption">Options</label>
+                        <div class="col-sm-6">
+                            <select id="searchOption" name="searchOption" class="form-control" ng-model="InfoService.option">
+                                <option value="vat"><font>CVR</font></option>
+                                <option value="name"><font>Name</font></option>
+                                <option value="phone"><font>Phone number</font></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" id="countryGroup">
+                        <label class="col-sm-2 control-label" for="country">Country</label>
+                        <div class="col-sm-6">
+                            <select id="country" name="country" class="form-control" ng-model="InfoService.country">
+                                <option value="dk" ng-model="InfoService.country"> <font>DK</font</option>
+                                <option value="no" ng-model="InfoService.country"> <font>NO</font</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"></label>
+                        <div class="col-sm-6">
+                            <a href="#/view6">
+                                <button type="button" class="btn btn-success">
+                                    <font>Find</font>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+
+
+    </div>
+
+</div>

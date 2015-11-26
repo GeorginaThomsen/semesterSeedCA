@@ -9,14 +9,8 @@ angular.module('myApp.view2', ['ngRoute'])
                 });
             }])
 
-        .controller('View2Ctrl', function ($http, $scope) {
-            $http({
-                method: 'GET',
-                url: 'api/demouser'
-            }).then(function successCallback(res) {
-                $scope.data = res.data.message;
-            }, function errorCallback(res) {
-                $scope.error = res.status + ": " + res.data.statusText;
-            });
+        .controller('View2Ctrl', function ($http, $scope, DataFromApi, InfoService) {
+
+            $scope.InfoService = InfoService;
 
         });

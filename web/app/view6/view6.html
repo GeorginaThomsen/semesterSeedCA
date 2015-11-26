@@ -1,0 +1,43 @@
+<div ng-if="!details">Loading results...</div>
+<div>
+    <div class="panel panel-default">
+        <div class="panel panel-heading">
+            <h3 class="panel-title"><strong>{{ details.name}}</strong></h3>
+
+        </div>
+        <div class="panel-body">
+            <dl class="dl-horizontal">
+                <dt>CVR-number</dt><dd><p>{{ details.vat}}</p></dd>
+                <dt>Address</dt><dd><p>{{ details.address}}</p></dd>
+                <dt>Zip & city</dt><dd><p>{{ details.zipcode + " " + details.city}}</p></dd>
+                <dt>Start date</dt><dd><p>{{ details.startdate}}</p></dd>
+                <dt>Employess</dt><dd><p>{{ details.employees}}</p></dd>
+            </dl>
+
+            <uib-accordion>
+                <uib-accordion-group ng-repeat="prodactionUnit in details.productionunits">
+                    <uib-accordion-heading><strong>{{ prodactionUnit.name}}</strong></uib-accordion-heading>
+                    <dl class="dl-horizontal">
+                        <dt>Address</dt><dd><p>{{ prodactionUnit.address}}</p></dd>
+                        <dt>Zip code</dt><dd><p>{{ prodactionUnit.zipcode}}</p></dd>
+                        <dt>City</dt><dd><p>{{ prodactionUnit.city}}</p></dd>
+                        <dt>Phone</dt><dd><p>{{ prodactionUnit.phone}}</p></dd>
+                        <dt>Email</dt><dd><p>{{ prodactionUnit.email}}</p></dd>
+                    </dl>
+                </uib-accordion-group>
+
+            </uib-accordion>
+
+            <div class="col-sm-6 navbar-form navbar-right">
+                <a href="#/view2">
+                    <button type="button" class="btn btn-success">
+                        <font>Find new company</font>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-if="details.error === 'NOT_FOUND' || details.error === 'NO_SEARCH'">
+    {{details.error}}
+</div>
