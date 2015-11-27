@@ -1,1 +1,55 @@
-<h3>All users view 4.</h3>
+<div>
+    <div class="panel panel-default">
+        <div class="panel panel-heading">
+            <h3 class="panel-title"><strong>Users in the system</strong></h3>
+        </div>    
+        <div class="panel-body">
+            <fieldset>
+                <!--
+                                <uib-accordion >
+                                    <uib-accordion-group ng-repeat="user in users">
+                                        <uib-accordion-heading><strong>{{ user.name}}</strong></uib-accordion-heading>
+                
+                                    </uib-accordion-group>
+                
+                                </uib-accordion>
+                -->
+                <table class="table table-stripped table-hover ">
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="user in users">
+                            <th>{{ $index + 1}}</th>
+                            <th>{{user.name}}</th>
+                            <th>
+                                <button type="button" class="btn btn-danger" data-ng-click="deleteUser($index)"> Delete </button>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>                
+
+        </div>
+    </div>
+
+
+    <div>
+        <!--
+                <table class="table table-stripped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>User name</th>
+                        </tr>
+                    </thead>
+        
+                    <tbody>
+                        <tr ng-repeat="user in users">
+                            <th>1</th>
+                            <th>{{user.name}}</th>
+                        </tr>
+                    </tbody>
+                </table>
+        -->
+    </div>
+</div>

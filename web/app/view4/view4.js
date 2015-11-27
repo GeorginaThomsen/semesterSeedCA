@@ -10,12 +10,29 @@ angular.module('myApp.view4', ['ngRoute'])
             }])
 
         .controller('View4Ctrl', function ($http, $scope) {
-            $http.get('api/demoadmin')
+            $scope.users = [];
+            $scope.userNameD = '';
+            $scope.item = 0;
+            $http.get('api/admin/users')
                     .success(function (data, status, headers, config) {
-                        $scope.data = data;
+                        $scope.users = data;
                     })
                     .error(function (data, status, headers, config) {
 
                     });
+
+            $scope.deleteUser = function (index) {
+
+                var preparedUrl = 'api/admin/user/' + $scope.users[index].name;
+                $http({
+                    method: 'DELETE',
+                    url: preparedUrl
+                }).then(function successCallback(response) {
+                    $scope.users = response.data;
+                    //$scope.users.splice(index, 1);
+                }, function errorCallback(response) {
+
+                });
+            };
 
         });

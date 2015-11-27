@@ -1,23 +1,80 @@
+
 package rest;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import java.util.List;
+import entity.User;
 import javax.annotation.security.RolesAllowed;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
-@Path("demoadmin")
+@Path("admin")
 @RolesAllowed("Admin")
-public class Admin {
-  
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public String getSomething(){
-    String now = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss").format(new Date());
-    return "{\"message\" : \"This message was delivered via a REST call accesible by only authenticated ADMINS\",\n"
-            +"\"serverTime\": \""+now +"\"}"; 
-  }
- 
+public class Admin
+{
+
+    private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("PU-Local");
+
+    @GET
+    @Path("/users")
+    @Produces("application/json")
+    public Response getAllUsers()
+    {
+        String jsonFormatUsers;
+        EntityManager em = getEntityManager();
+        try {
+            List<User> users = em.createQuery("SELECT u FROM User u").getResultList();
+            JsonArray jArray = new JsonArray();
+            for (User user : users) {
+                JsonObject jsonObj = new JsonObject();
+                if (!"admin".equals(user.getUserName())) {
+                    jsonObj.addProperty("name", user.getUserName());
+                    jArray.add(jsonObj);
+                }
+            }
+            jsonFormatUsers = gson.toJson(jArray);
+        } finally {
+            em.close();
+        }
+
+        return Response.ok(jsonFormatUsers).build();
+    }
+
+    @DELETE
+    @Path("/user/{name}")
+    @Produces("application/json")
+    public Response deleteUser(@PathParam("name") String name)
+    {
+        //boolean isDeleted = false;
+        Response updatedListOfUsers;
+        EntityManager em = getEntityManager();
+        try {
+            User user = em.find(User.class, name);
+            em.getTransaction().begin();
+            em.remove(user);
+            em.getTransaction().commit();
+            //isDeleted = true;
+            updatedListOfUsers = getAllUsers();
+        } finally {
+            em.close();
+        }
+        return updatedListOfUsers;
+    }
+
+    public EntityManager getEntityManager()
+    {
+        return emf.createEntityManager();
+    }
+
 }
