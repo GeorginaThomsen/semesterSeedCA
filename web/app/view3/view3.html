@@ -1,1 +1,21 @@
-Exchange Rate Info - view3
+<h1>Exchange info</h1>
+
+    <table class="table">
+        <thead>
+            <tr >
+                <th>Code: </th>
+                <th>Description: </th>
+                <th>Rate: </th>
+                <th>Date: </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="c in data">
+                <td>{{c.code}}</td>
+                <td>{{c.description}}</td>
+                <td>{{c.rate}}</td>
+                <td>{{c.date}}</td>
+            </tr>
+           
+        </tbody>
+    </table>
