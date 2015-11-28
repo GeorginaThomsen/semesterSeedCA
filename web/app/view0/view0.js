@@ -11,6 +11,4 @@ angular.module('myApp.view0', ['ngRoute'])
             }])
 
         .controller('View0Ctrl', ["InfoFactory", "InfoService", function (InfoFactory, InfoService) {
-                this.msgFromFactory = InfoFactory.getInfo();
-                this.msgFromService = InfoService.getInfo();
             }]);
