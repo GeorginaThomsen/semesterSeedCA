@@ -44,7 +44,7 @@ public class XMLHandler{
             list.add(new DailyExchangeRate(new Currency(code, description), date, rate));
         }
     }
-    private List<String> getDailyExchangeRate_RowData() {
+    public List<String> getDailyExchangeRate_RowData() {
         List<String> rowData = null;
         rowData = reader.scrapeDataFromNationalBanken();//1) get the list of data
         return rowData;//3) return the list

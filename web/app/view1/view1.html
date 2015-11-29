@@ -6,13 +6,43 @@
         <uib-accordion>
             <uib-accordion-group>
                 <uib-accordion-heading><strong>Test strategy</strong></uib-accordion-heading>
-                testStrategytestStrategytestStrategytestStrategytestStrategytestStrategy
+                <p>Our test strategy was mostly concentrated on using PostMan instead of using the Rest Assured testing platform<br/>
+                This strategy was quite useful for our team, except that we had to create and run the tests manually from Postman, instead of having our tests automated by RestAssured
+                <br/>
+                For testing the facade classes and the XML handler service we used Junit tests</p>
             </uib-accordion-group>
         </uib-accordion>
         <uib-accordion>
             <uib-accordion-group>
                 <uib-accordion-heading><strong>Who did what</strong></uib-accordion-heading>
-                testStrategytestStrategytestStrategytestStrategytestStrategytestStrategy
+                <ul>
+                    <p style="color: orange">Lukasz Koziarski</p>
+                    <li>Changing the "main page" to have (at least) five top-menu entries</li>
+                    <li>Implementing the task, related to the menu-entry Company Info</li>
+                    <li>Designing the user interface</li>
+                    <li>Using Open Data, AngularJS and Cool Controls</li>
+                    <li>Adding a new GET-REST service: api/admin/users</li>
+                    <li>Adding a new DELETE-REST service: api/admin/user/:id</li>
+                    <li>Creating the necessary UI-code to show all users and delete a user on the "All Users" page.</li>
+                    <br/>
+                    <p style="color: orange">Aleksandar Terziev</p>
+                    <li>Creating a new MySQL database for this CA</li>
+                    <li>Adding an option for new users to create an account</li>
+                    <li>Creating (normalized) Entity Classes to hold information about Currency Rates for each day</li>
+                    <li>Adding a feature to let our server start a periodical task that, on a daily basis, that fetch Currency Rates and store the result in the Database</li>
+                    <li>API-testing</li>
+                    <li>Backend testing</li>
+                    <li>Completing the Documentation Page(s) and upload all to OPENSHFT</li>
+                    <br/>
+                    <p style="color: orange">Georgina Thomsen</p>
+                    <li>Deleting existing users from the DB, and adding two new users</li>
+                    <li>REST service that returns a JSON representation with all currency rates, similar to the XML-version that was originally received</li>
+                    <li>Adding a table using AngularJS and ng-repeat (on the Exchange Rate Info View) with information about all available rates for the current day</li>
+                    <li>Providing a  service that returns the amount you get in a given currency</li>
+                    <li>Creating a Calculator view using AngularJS to provide users with a calculator service</li>
+                    <li>API-testing</li>
+                    <li>Backend testing</li>
+                </ul>
             </uib-accordion-group>
         </uib-accordion>
         <uib-accordion>
@@ -28,7 +58,10 @@
         <uib-accordion>
             <uib-accordion-group>
                 <uib-accordion-heading><strong>How to test the system</strong></uib-accordion-heading>
-                testStrategytestStrategytestStrategytestStrategytestStrategytestStrategy
+                <h4>Guide</h4><br/>
+                <p>XML Service Testing is performed in the XML Handler class in our Test Package folder. We have JUnit tests. 
+                <br/>
+                </p>
             </uib-accordion-group>
         </uib-accordion>
     </div>

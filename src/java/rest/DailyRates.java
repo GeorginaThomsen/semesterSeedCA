@@ -83,13 +83,13 @@ public class DailyRates {
         JsonArray ja = new JsonArray();
 
         for (int i = 0; i < curr.size() || i < daily.size(); i++) {
-            JsonObject jsObj = new JsonObject();
-            jsObj.addProperty("code", curr.get(i).getCode());
-            jsObj.addProperty("description", curr.get(i).getDescription());
-            jsObj.addProperty("date", daily.get(i).getDate_());
-            jsObj.addProperty("rate", daily.get(i).getRate());
-            jsObj.addProperty("id", daily.get(i).getId());
-            ja.add(jsObj);
+            JsonObject jcurrObj = new JsonObject();
+            jcurrObj.addProperty("code", curr.get(i).getCode());
+            jcurrObj.addProperty("description", curr.get(i).getDescription());
+            jcurrObj.addProperty("date", daily.get(i).getDate_());
+            jcurrObj.addProperty("rate", daily.get(i).getRate());
+            jcurrObj.addProperty("id", daily.get(i).getId());
+            ja.add(jcurrObj);
         }
 
         return gson.toJson(ja);
